@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Поездки – Путевые заметки
+{% endblock %}
+
+{% block content %}
+    <h1>Поездки</h1>
+
+    <p>Всего поездок: {{ trips|length }}</p>
+
+    {% for trip in trips %}
+        {% include "trips/includes/trip_card.html" %}
+    {% empty %}
+        <p>Поездки не найдены.</p>
+    {% endfor %}
+{% endblock %}

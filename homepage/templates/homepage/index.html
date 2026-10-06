@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Главная – Путевые заметки
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-4">Путевые заметки</h1>
+
+    <p class="lead">
+        Дневник путешествий: поездки и заметки по дням.
+    </p>
+    <p>
+        Записывайте впечатления о каждом дне поездки и находите их
+        после возвращения домой.
+    </p>
+    <p>Основные разделы:</p>
+    <a href="{% url 'trips:list' %}" class="btn btn-primary me-2">
+        Поездки
+    </a>
+    <a href="{% url 'notes:list' %}" class="btn btn-secondary">
+        Заметки
+    </a>
+{% endblock %}

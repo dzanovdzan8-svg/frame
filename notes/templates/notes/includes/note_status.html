@@ -1,0 +1,9 @@
+{% if note.is_archived %}
+    <span class="badge bg-secondary note-status note-status-archived">
+        В архиве
+    </span>
+{% else %}
+    <span class="badge bg-success note-status note-status-active">
+        Активна
+    </span>
+{% endif %}

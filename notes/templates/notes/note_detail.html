@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if note %}
+        Заметка №{{ note.id }} – Путевые заметки
+    {% else %}
+        Заметка не найдена – Путевые заметки
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if note %}
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Заметка №{{ note.id }}</h1>
+
+                <p class="card-text">
+                    <strong>Поездка:</strong>
+                    <a href="{% url 'trips:detail' note.trip.id %}">
+                        {{ note.trip.title }}
+                    </a>
+                </p>
+                <p class="card-text">
+                    <strong>Дата:</strong> {{ note.note_date }}
+                </p>
+                <p class="card-text">
+                    <strong>Автор:</strong> {{ note.traveler.name }}
+                </p>
+                <p class="card-text">
+                    {{ note.text|default:"Текст не указан"|linebreaksbr }}
+                </p>
+                <p class="card-text">
+                    <strong>Статус:</strong>
+                    {% include "notes/includes/note_status.html" %}
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <h1 class="text-danger">Заметка не найдена</h1>
+        <p>Заметка с указанным идентификатором отсутствует.</p>
+    {% endif %}
+
+    <a
+        href="{% url 'notes:list' %}"
+        class="btn btn-outline-secondary mt-3"
+    >
+        ← к списку заметок
+    </a>
+{% endblock %}

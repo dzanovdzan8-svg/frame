@@ -1,0 +1,22 @@
+<article class="card trip-card mb-3">
+    <div class="card-body">
+        <h2 class="card-title h4">
+            {{ trip.title|default:"Без названия" }}
+        </h2>
+
+        <p class="card-text">
+            {{ trip.country }},
+            {{ trip.start_date }} – {{ trip.end_date }}
+        </p>
+        <p class="card-text">
+            Длительность: {{ trip.duration_days }} дн.
+        </p>
+
+        <a
+            href="{% url 'trips:detail' trip.id %}"
+            class="btn btn-primary"
+        >
+            Подробнее
+        </a>
+    </div>
+</article>

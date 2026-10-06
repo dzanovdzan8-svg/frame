@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Заметки – Путевые заметки
+{% endblock %}
+
+{% block content %}
+    <h1>Заметки</h1>
+
+    <p>Всего заметок: {{ notes|length }}</p>
+
+    <ul class="list-group">
+        {% for note in notes %}
+            <li class="list-group-item d-flex justify-content-between">
+                <span>
+                    <a href="{% url 'notes:detail' note.id %}">
+                        Заметка №{{ note.id }}
+                    </a>
+                    – {{ note.trip.title }}, {{ note.note_date }},
+                    {{ note.traveler.name }}
+                    <br>
+                    <small class="text-muted">
+                        {{ note.text|truncatechars:60 }}
+                    </small>
+                </span>
+                {% include "notes/includes/note_status.html" %}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Заметки не найдены.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
