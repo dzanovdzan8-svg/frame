@@ -1,0 +1,50 @@
+body {
+    min-height: 100vh;
+    background-color: #f7f9fa;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1d6b73;
+}
+
+.travel-logo {
+    width: 64px;
+    height: auto;
+    margin: 0.5rem 0;
+}
+
+.site-nav {
+    border-bottom: 1px solid #dde3e6;
+    margin-bottom: 1.5rem;
+}
+
+.trip-card {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #cfe0e2;
+    border-left: 6px solid #1d6b73;
+    border-radius: 8px;
+}
+
+.note-status {
+    font-weight: 600;
+    align-self: center;
+}
+
+.note-status-archived {
+    opacity: 0.8;
+}
+
+.nav-link.active {
+    font-weight: 700;
+    border-bottom: 2px solid #1d6b73;
+}
