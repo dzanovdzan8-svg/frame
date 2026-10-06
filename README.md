@@ -19,7 +19,7 @@
 - Django 5.2 (LTS);
 - Django Template Language (DTL);
 - HTML5, CSS3, JavaScript;
-- Bootstrap 5.3 (через CDN);
+- Bootstrap 5.3.3 (локальная копия в `homepage/static/homepage/css/`);
 - JSON для хранения данных;
 - Git, pytest, flake8.
 
@@ -149,6 +149,7 @@ HTML в Python-коде не формируется: функция `page()` и�
 
 В `homepage/static/homepage/`:
 
+- `css/bootstrap.min.css` — Bootstrap 5.3.3 (локальная копия, работает без доступа к CDN);
 - `css/style.css` — собственные стили (карточки, шапка, статусы);
 - `js/main.js` — текущий год в подвале и подсветка активного пункта
   навигации;
