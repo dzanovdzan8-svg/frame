@@ -6,5 +6,6 @@ app_name = "trips"
 
 urlpatterns = [
     path("", views.trips, name="list"),
+    path("available/", views.available_trips, name="available"),
     path("<int:trip_id>/", views.trip_detail, name="detail"),
 ]

@@ -7,7 +7,45 @@
 {% block content %}
     <h1>Поездки</h1>
 
-    <p>Всего поездок: {{ trips|length }}</p>
+    <form method="get" class="row g-2 align-items-end mb-3">
+        <div class="col-auto">
+            <label for="country" class="form-label">Страна</label>
+            <select name="country" id="country" class="form-select">
+                <option value="">Все страны</option>
+                {% for item in countries %}
+                    <option
+                        value="{{ item.country }}"
+                        {% if item.country == selected_country %}selected{% endif %}
+                    >
+                        {{ item.country }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="min_days" class="form-label">
+                Не короче (дней)
+            </label>
+            <input
+                type="number"
+                min="1"
+                name="min_days"
+                id="min_days"
+                value="{{ min_days }}"
+                class="form-control"
+            >
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Показать</button>
+        </div>
+    </form>
+
+    <p>
+        Всего поездок: {{ trips|length }}.
+        <a href="{% url 'trips:available' %}">
+            Найти поездку без заметки на дату
+        </a>
+    </p>
 
     {% for trip in trips %}
         {% include "trips/includes/trip_card.html" %}

@@ -43,7 +43,8 @@
             {% for note in trip_notes %}
                 <li class="list-group-item d-flex justify-content-between">
                     <a href="{% url 'notes:detail' note.id %}">
-                        {{ note.note_date }}:
+                        {{ note.note_date }}
+                        ({{ note.traveler_name }}):
                         {{ note.text|truncatechars:50 }}
                     </a>
                     {% include "notes/includes/note_status.html" %}

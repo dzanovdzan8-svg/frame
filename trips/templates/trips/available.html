@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Дни без заметок – Путевые заметки
+{% endblock %}
+
+{% block content %}
+    <h1>Поездки без заметки на выбранный день</h1>
+
+    <form method="get" class="row g-2 align-items-end mb-3">
+        <div class="col-auto">
+            <label for="date" class="form-label">Дата</label>
+            <input
+                type="date"
+                id="date"
+                name="date"
+                value="{{ note_date }}"
+                class="form-control"
+            >
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+
+    {% if error %}
+        <p class="text-danger">{{ error }}</p>
+    {% elif note_date %}
+        <h2 class="h4">Дата: {{ note_date }}</h2>
+        {% for trip in trips %}
+            <article class="card trip-card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title h5">{{ trip.title }}</h3>
+                    <p class="card-text">{{ trip.country }}</p>
+                    <a
+                        href="{% url 'trips:detail' trip.id %}"
+                        class="btn btn-outline-secondary"
+                    >
+                        Подробнее
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <p>
+                На эту дату нет поездок, для которых можно
+                добавить заметку.
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    <a
+        href="{% url 'trips:list' %}"
+        class="btn btn-outline-secondary mt-3"
+    >
+        ← к списку поездок
+    </a>
+{% endblock %}

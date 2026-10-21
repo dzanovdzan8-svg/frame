@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Статистика – Путевые заметки
+{% endblock %}
+
+{% block content %}
+    <h1>Статистика</h1>
+
+    <p class="lead">
+        Поездок: {{ summary.trips_count }}.
+        Активных заметок: {{ notes_count }}.
+    </p>
+    <p>
+        Длительность поездки: от {{ summary.min_days }}
+        до {{ summary.max_days }} дн.,
+        в среднем {{ summary.avg_days }} дн.
+    </p>
+
+    <h2 class="h4 mt-4">Заметки по поездкам</h2>
+    <ul class="list-group">
+        {% for item in trip_stats %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ item.trip_title }}
+                <span class="badge bg-primary">{{ item.notes_count }}</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">Данные отсутствуют.</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h4 mt-4">Заметки по авторам</h2>
+    <ul class="list-group">
+        {% for item in traveler_stats %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ item.traveler_name }}
+                <span class="badge bg-primary">{{ item.notes_count }}</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">Данные отсутствуют.</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h4 mt-4">Поездки по странам</h2>
+    <ul class="list-group">
+        {% for item in country_stats %}
+            <li class="list-group-item">
+                {{ item.country }}: поездок {{ item.trips_count }},
+                всего {{ item.total_days }} дн.
+            </li>
+        {% empty %}
+            <li class="list-group-item">Данные отсутствуют.</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h4 mt-4">Поездки с несколькими заметками</h2>
+    <ul class="list-group">
+        {% for item in busy_trips %}
+            <li class="list-group-item">
+                {{ item.trip_title }} – {{ item.notes_count }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Таких поездок пока нет.</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h4 mt-4">Последние заметки</h2>
+    <ul class="list-group">
+        {% for item in latest_notes %}
+            <li class="list-group-item">
+                <a href="{% url 'notes:detail' item.id %}">
+                    {{ item.note_date }}
+                </a>
+                – {{ item.trip_title }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Заметок пока нет.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

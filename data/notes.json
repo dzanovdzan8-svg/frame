@@ -14,5 +14,45 @@
     "traveler_id": 2,
     "text": "Босфор на рассвете и лучший чай за всю поездку.",
     "is_archived": false
+  },
+  {
+    "id": 3,
+    "trip_id": 1,
+    "note_date": "2026-07-13",
+    "traveler_id": 2,
+    "text": "Ледяная вода в Байкале, купались пять секунд.",
+    "is_archived": false
+  },
+  {
+    "id": 4,
+    "trip_id": 1,
+    "note_date": "2026-07-14",
+    "traveler_id": 1,
+    "text": "Дорога до Ольхона и паром через пролив.",
+    "is_archived": false
+  },
+  {
+    "id": 5,
+    "trip_id": 3,
+    "note_date": "2026-05-02",
+    "traveler_id": 1,
+    "text": "Сергиев Посад: лавра и обед в трапезной.",
+    "is_archived": false
+  },
+  {
+    "id": 6,
+    "trip_id": 3,
+    "note_date": "2026-05-03",
+    "traveler_id": 2,
+    "text": "Переславль-Залесский, Плещеево озеро.",
+    "is_archived": false
+  },
+  {
+    "id": 7,
+    "trip_id": 3,
+    "note_date": "2026-05-03",
+    "traveler_id": 1,
+    "text": "Черновик, заменён заметкой №6.",
+    "is_archived": true
   }
 ]

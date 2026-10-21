@@ -7,17 +7,26 @@
 {% block content %}
     <h1>Заметки</h1>
 
+    <p>
+        {% for key, item in statuses.items %}
+            <a
+                href="{% url 'notes:list' %}?status={{ key }}"
+                class="btn btn-sm {% if key == status %}btn-primary{% else %}btn-outline-primary{% endif %}"
+            >
+                {{ item.0 }}
+            </a>
+        {% endfor %}
+    </p>
+
     <p>Всего заметок: {{ notes|length }}</p>
 
     <ul class="list-group">
         {% for note in notes %}
             <li class="list-group-item d-flex justify-content-between">
                 <span>
-                    <a href="{% url 'notes:detail' note.id %}">
-                        Заметка №{{ note.id }}
-                    </a>
-                    – {{ note.trip.title }}, {{ note.note_date }},
-                    {{ note.traveler.name }}
+                    <a href="{% url 'notes:detail' note.id %}">Заметка №{{ note.id }}</a>
+                    – {{ note.trip_title }}, {{ note.note_date }},
+                    {{ note.traveler_name }}
                     <br>
                     <small class="text-muted">
                         {{ note.text|truncatechars:60 }}

@@ -5,15 +5,25 @@ if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
 
-// Подсветка пункта навигации, соответствующего текущему разделу
+// Подсветка пункта навигации: выбирается самый длинный подходящий адрес,
+// чтобы /notes/statistics/ не подсвечивал одновременно «Заметки»
 const currentPath = window.location.pathname;
+const links = Array.from(document.querySelectorAll(".site-nav .nav-link"));
 
-document.querySelectorAll(".site-nav .nav-link").forEach((link) => {
+let best = null;
+
+links.forEach((link) => {
     const href = link.getAttribute("href");
-    const isHome = href === "/" && currentPath === "/";
-    const isSection = href !== "/" && currentPath.startsWith(href);
+    const matches = href === "/"
+        ? currentPath === "/"
+        : currentPath.startsWith(href);
 
-    if (isHome || isSection) {
-        link.classList.add("active");
+    if (matches && (best === null
+        || href.length > best.getAttribute("href").length)) {
+        best = link;
     }
 });
+
+if (best) {
+    best.classList.add("active");
+}

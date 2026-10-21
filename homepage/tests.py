@@ -14,6 +14,7 @@ class HomepageTests(TestCase):
         self.assertContains(response, "Главная – Путевые заметки")
         self.assertContains(response, 'href="/trips/"')
         self.assertContains(response, 'href="/notes/"')
+        self.assertContains(response, 'href="/notes/statistics/"')
 
     def test_static_files_are_linked(self):
         response = self.client.get("/")
